@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BlogSpot.DisplayPostActivity">
+    <ContentPage.Content>
+        <!-- Add a Grid to hold the FAB -->
+        <Grid VerticalOptions="End" HorizontalOptions="End">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+                <StackLayout >
+                    <Label Text="Posts" FontSize="20" HorizontalOptions="CenterAndExpand" Margin="0,20,0,10"/>
+                    <ListView x:Name="PostsListView" ItemSelected="PostsListView_ItemSelected">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextCell Text="{Binding PostTitle}" Detail="{Binding DatePosted}" />
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+
+        
+
+            <!-- Add the FAB -->
+            <ImageButton Source="add_icon.png" Clicked="CreatePostButton_Clicked" BackgroundColor="Transparent"
+                         Grid.Row="0" Grid.Column="0" Margin="16" HeightRequest="56" WidthRequest="56"
+                         CornerRadius="28" HorizontalOptions="End" VerticalOptions="End" />
+
+            <!-- Add an invisible button to cover the remaining space -->
+            <Button Clicked="CreatePostButton_Clicked" BackgroundColor="Transparent" Grid.Row="1" Grid.Column="1" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
